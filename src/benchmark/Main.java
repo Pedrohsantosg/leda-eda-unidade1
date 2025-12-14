@@ -1,13 +1,18 @@
 package benchmark;
 
+import util.DataGenerator;
+
 import model.Estudante;
+
 import sort.BubbleSort;
 import sort.InsertionSort;
-import util.DataGenerator;
 import sort.SelectionSort;
 import sort.MergeSort;
 import sort.QuickSort;
 import sort.CountingSort;
+
+import search.LinearSearch;
+
 
 
 
@@ -18,6 +23,7 @@ public class Main {
     public static void main(String[] args) {
 
         Estudante[] alunos = DataGenerator.gerarEstudantes(10);
+        Estudante[] ordenado = MergeSort.sort(alunos);
 
         System.out.println("ANTES:");
         for (Estudante e : alunos) {
@@ -84,7 +90,15 @@ public class Main {
             System.out.println(e);
         }
 
+        Estudante alvo = ordenado[0];
 
+        System.out.println("\nBUSCA LINEAR ITERATIVA:");
+        int idxIter = LinearSearch.iterative(ordenado, alvo);
+        System.out.println("Encontrado na posição: " + idxIter);
+
+        System.out.println("\nBUSCA LINEAR RECURSIVA:");
+        int idxRec = LinearSearch.recursive(ordenado, alvo);
+        System.out.println("Encontrado na posição: " + idxRec);
 
 
     }
