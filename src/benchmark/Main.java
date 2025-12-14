@@ -5,6 +5,8 @@ import sort.BubbleSort;
 import sort.InsertionSort;
 import util.DataGenerator;
 import sort.SelectionSort;
+import sort.MergeSort;
+
 
 
 public class Main {
@@ -47,6 +49,13 @@ public class Main {
         for (Estudante e : selStable) {
             System.out.println(e);
         }
+
+        System.out.println("\nMERGE SORT:");
+        Estudante[] merge = MergeSort.sort(alunos);
+        for (Estudante e : merge) {
+            System.out.println(e);
+        }
+
 
     }
 }
