@@ -4,6 +4,8 @@ import model.Estudante;
 import sort.BubbleSort;
 import sort.InsertionSort;
 import util.DataGenerator;
+import sort.SelectionSort;
+
 
 public class Main {
 
@@ -33,5 +35,18 @@ public class Main {
         for (Estudante e : insertion) {
             System.out.println(e);
         }
+
+        System.out.println("\nSELECTION SORT (SIMPLE):");
+        Estudante[] selSimple = SelectionSort.sortSimple(alunos);
+        for (Estudante e : selSimple) {
+            System.out.println(e);
+        }
+
+        System.out.println("\nSELECTION SORT (STABLE):");
+        Estudante[] selStable = SelectionSort.sortStable(alunos);
+        for (Estudante e : selStable) {
+            System.out.println(e);
+        }
+
     }
 }
