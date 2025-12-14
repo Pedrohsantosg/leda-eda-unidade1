@@ -4,8 +4,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SortBenchmark.run(10_000);//pode aumentar o valor se quiser
-        SortBenchmark.run(50_000);//pode aumentar o valor se quiser
-        SortBenchmark.run(100_000);//pode aumentar o valor se quiser
+        // Benchmark de ordenação
+        SortBenchmark.run(20_000);
+        SortBenchmark.run(100_000);
+
+        // Benchmark de buscas
+        SearchBenchmark.run(20_000);
+        SearchBenchmark.run(100_000);
     }
 }
