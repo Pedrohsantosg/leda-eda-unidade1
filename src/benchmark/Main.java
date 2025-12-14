@@ -51,6 +51,10 @@ public class Main {
 
         runSearch("Binary Search (Recursive)",
                 BinarySearch.recursive(ordenado, alvo));
+
+        runSearch("Linear Search (Two Pointers)",
+                TwoPointersLinearSearch.search(ordenado, alvo));
+
     }
 
     // =============================
