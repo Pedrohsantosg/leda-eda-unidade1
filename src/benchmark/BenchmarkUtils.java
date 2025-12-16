@@ -4,6 +4,8 @@ public class BenchmarkUtils {
 
     /**
      * Executa um bloco de código e retorna o tempo médio de execução
+     * Retorna -1 se hpuver StackOverFlow
+     * Retorna -2 se houver Memory Limit
      *
      * @param task código a ser medido
      * @param warmup número de execuções descartadas (warm-up JVM)
@@ -11,21 +13,28 @@ public class BenchmarkUtils {
      * @return tempo médio em nanossegundos
      */
     public static long measure(Runnable task, int warmup, int runs) {
+        try {
+            // Warm-up (JVM)
+            for (int i = 0; i < warmup; i++) {
+                task.run();
+            }
 
-        // Warm-up (JVM)
-        for (int i = 0; i < warmup; i++) {
-            task.run();
+            long totalTime = 0;
+
+            for (int i = 0; i < runs; i++) {
+                long start = System.nanoTime();
+                task.run();
+                long end = System.nanoTime();
+                totalTime += (end - start);
+            }
+
+            return totalTime / runs;
+
+        }catch(StackOverflowError e) {
+            return -1;
+
+        } catch(OutOfMemoryError e){
+            return -2;
         }
-
-        long totalTime = 0;
-
-        for (int i = 0; i < runs; i++) {
-            long start = System.nanoTime();
-            task.run();
-            long end = System.nanoTime();
-            totalTime += (end - start);
-        }
-
-        return totalTime / runs;
     }
 }

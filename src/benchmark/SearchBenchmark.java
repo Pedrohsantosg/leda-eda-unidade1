@@ -42,6 +42,10 @@ public class SearchBenchmark {
 
     private static void benchmark(String name, Runnable task) {
         long time = BenchmarkUtils.measure(task, WARMUP, RUNS);
-        System.out.printf("%-30s : %d ns%n", name, time);
+        if (time == -1){
+            System.out.printf("%-30s : %s%n", name, "STACK_OVERFLOW");
+        } else{
+            System.out.printf("%-30s : %d ns%n", name, time);
+        }
     }
 }

@@ -64,6 +64,14 @@ public class SortBenchmark {
      */
     private static void benchmark(String name, Runnable task) {
         long time = BenchmarkUtils.measure(task, WARMUP, RUNS);
-        System.out.printf("%-25s : %d ns%n", name, time);
+
+        if (time == -1){
+            System.out.printf("%-25s : %s%n",name, "STACK_OVERFLOW");
+        } else if(time == -2){
+            System.out.printf("%-25s : %s%n",name, "HEAP_OVERFLOW");
+        } else{
+            System.out.printf("%-25s : %d ns%n", name, time);
+        }
+
     }
 }
