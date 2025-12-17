@@ -49,6 +49,9 @@ public class SortBenchmark {
         benchmark("MergeSort",
                 () -> MergeSort.sort(base));
 
+        benchmark("quickSort simple",
+                () -> QuickSort.sortSimple(base));
+
         benchmark("QuickSort Shuffle",
                 () -> QuickSort.sortWithShuffle(base));
 
