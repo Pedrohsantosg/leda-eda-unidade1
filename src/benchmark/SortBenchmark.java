@@ -3,6 +3,7 @@ package benchmark;
 import model.Estudante;
 import util.DataGenerator;
 import util.ScenarioGenerator;
+import java.util.Arrays;
 
 import sort.*;
 
@@ -63,15 +64,28 @@ public class SortBenchmark {
                 () -> CountingSort.sortByNota(base));
     }
 
+    public static void runPrimitive(int size) {
+        System.out.println("\n===== EXTRA: INT COMPARISON (n = " + size + ") =====");
+
+        int[] random = DataGenerator.genereteintegers(size);
+        runPrimitiveScenario("Random int[]", random);
+
+        int[] sorted = random.clone();
+        Arrays.sort(sorted);
+        runPrimitiveScenario("Sorted int[]", sorted);
+
+        int[] reversed = new int[size];
+        for (int i = 0; i < size; i++) {
+            reversed[i] = sorted[size - 1 - i];
+        }
+        runPrimitiveScenario("Reversed int[]", reversed);
+    }
+
     /**
      * Experimento Extra: Comparação de QuickSorts com Primitivos
      */
-    public static void runPrimitive(int size) {
-        System.out.println("\n===== EXTRA: PRIMITIVE INT COMPARISON (n = " + size + ") =====");
-
-        int[] base = DataGenerator.genereteintegers(size);
-
-        System.out.println("\n--- Scenario: Random int[] ---");
+    public static void runPrimitiveScenario(String scenarioName, int[] base) {
+        System.out.println("\n===== EXTRA: INT COMPARISON (n = " +scenarioName  + ") =====");
 
         benchmark("QuickSort Simple (int)",
                 () -> QuickSort.sortSimple(base));
