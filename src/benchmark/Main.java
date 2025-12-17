@@ -27,7 +27,8 @@ public class Main {
                 case 3 -> searchingTutorial();
                 case 4 -> runSortBenchmark();
                 case 5 -> runSearchBenchmark();
-                case 6 -> showCredits();
+                case 6 -> runPrimitiveBenchmark();
+                case 7 -> showCredits();
                 case 0 -> {
                     System.out.println("\nEncerrando o sistema. Obrigado por utilizar o projeto!");
                     running = false;
@@ -69,7 +70,8 @@ public class Main {
         System.out.println("3 - Aprender sobre algoritmos de BUSCA");
         System.out.println("4 - Executar testes de desempenho (ORDENAÇÃO)");
         System.out.println("5 - Executar testes de desempenho (BUSCA)");
-        System.out.println("6 - Créditos do projeto");
+        System.out.println("6 - Executar testes de desempenho extra (QUICKSORT INT[])");
+        System.out.println("7 - Créditos do projeto");
         System.out.println("0 - Sair");
     }
 
@@ -177,6 +179,16 @@ public class Main {
         System.out.println("Aqui comparamos busca linear x binária.");
         int size = readInt("Informe o tamanho do vetor (ex: 20000): ");
         SearchBenchmark.run(size);
+        pause();
+    }
+    // =====================================================
+    // OPÇÃO 6 — BENCHMARK EXTRA
+    // =====================================================
+    private static void runPrimitiveBenchmark() {
+        System.out.println("\n⏱ EXPERIMENTO EXTRA - QUICKSORT PRIMITIVO");
+        System.out.println("Compara QuickSort manual com o QuickSort do java");
+        int size = readInt("Informe o tamanho do vetor (ex: 1000000): ");
+        SortBenchmark.runPrimitive(size);
         pause();
     }
 

@@ -1,6 +1,7 @@
 package benchmark;
 
 import model.Estudante;
+import util.DataGenerator;
 import util.ScenarioGenerator;
 
 import sort.*;
@@ -60,6 +61,26 @@ public class SortBenchmark {
 
         benchmark("CountingSort",
                 () -> CountingSort.sortByNota(base));
+    }
+
+    /**
+     * Experimento Extra: Comparação de QuickSorts com Primitivos
+     */
+    public static void runPrimitive(int size) {
+        System.out.println("\n===== EXTRA: PRIMITIVE INT COMPARISON (n = " + size + ") =====");
+
+        int[] base = DataGenerator.genereteintegers(size);
+
+        System.out.println("\n--- Scenario: Random int[] ---");
+
+        benchmark("QuickSort Simple (int)",
+                () -> QuickSort.sortSimple(base));
+
+        benchmark("QuickSort Shuffle (int)",
+                () -> QuickSort.sortWithShuffle(base));
+
+        benchmark("QuickSort Java (int)",
+                () -> QuickSort.sortJava(base));
     }
 
     /**
