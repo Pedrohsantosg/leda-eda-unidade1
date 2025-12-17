@@ -26,4 +26,12 @@ public class DataGenerator {
         }
         return alunos;
     }
+
+    public static int[] genereteintegers(int tamanho){
+        int[] array = new int[tamanho];
+        for (int i = 0; i < tamanho; i++){
+            array[i] = random.nextInt(100000);
+        }
+        return array;
+    }
 }
