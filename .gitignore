@@ -30,6 +30,21 @@ bin/
 
 ### VS Code ###
 .vscode/
+*.code-workspace
 
 ### Mac OS ###
 .DS_Store
+
+### Arquivos python ###
+__pycache__/
+*.py[cod]
+.venv/
+env/
+
+### dados brutos ###
+analysis/data/*.csv
+analysis/data/**/*.csv
+
+### gráficos e tabelas ###
+graficos/
+tabela/
